@@ -2,8 +2,8 @@
 PRACTICE Test 1, problem 2.
 
 Authors: David Mutchler, Valerie Galluzzi, Mark Hays, Amanda Stouder,
-         their colleagues and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         their colleagues and Damon Kintner.
+"""  # Done: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 import rosegraphics as rg
 
@@ -101,8 +101,22 @@ def problem2a(circle, rectangle, window):
       :type rectangle: rg.Rectangle
       :type window:    rg.RoseWindow
     """
+
+    circle.attach_to(window)
+    rectangle.attach_to(window)
+    window.render()
+    window.continue_on_mouse_click()
+
+    line = rg.Line(rectangle.get_upper_right_corner(),rectangle.get_lower_left_corner())
+    line.attach_to(window)
+    window.render()
+    window.continue_on_mouse_click()
+
+    circle.fill_color = rectangle.outline_color
+    window.render()
+
     # ------------------------------------------------------------------
-    # TODO: 2. Implement and test this function.
+    # Done: 2. Implement and test this function.
     #          Tests have been written for you (above).
     # ------------------------------------------------------------------
     # ------------------------------------------------------------------
@@ -172,8 +186,22 @@ def problem2b(rect, n, delta, win):
       :type delta:  int
       :type win:    rg.RoseWindow
     """
+
+    rect.attach_to(win)
+    point1 = rg.Point(rect.corner_1.x - 2 * delta, rect.corner_1.y + 2 * delta)
+    point2 = rg.Point(rect.corner_2.x + 2 * delta, rect.corner_2.y - 2 * delta)
+    for k in range(n):
+        rectanle = rg.Rectangle(point1,point2)
+        rectanle.attach_to(win)
+        win.render()
+        point1.x = point1.x - 2*delta
+        point1.y = point1.y + 2*delta
+        point2.x = point2.x + 2*delta
+        point2.y = point2.y - 2*delta
+
+
     # ------------------------------------------------------------------
-    # TODO: 3. Implement and test this function.
+    # Done: 3. Implement and test this function.
     #          Tests have been written for you (above).
     # ------------------------------------------------------------------
     # ------------------------------------------------------------------
